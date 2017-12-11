@@ -46,7 +46,7 @@ body {
   background-image: url('../assets/img/skyline.jpg');
   position: absolute;
   top: calc(50% - 252px);
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: -2.5%;
+  transform: translateY(-50%);
   z-index: 1;
 }
