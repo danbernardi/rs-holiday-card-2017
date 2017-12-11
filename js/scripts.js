@@ -20,7 +20,6 @@ $(document).ready(function () {
         count = $('.member').length;
 
   function moveParallaxLayer( $layer, layerRatio, progress ) {
-    console.log(progress);
     var ratio = cellRatio * layerRatio;
     $layer.css({
       left: ( 50% - 0.5 - ( 0.5 + progress * count ) * ratio ) * 100 + '%'
@@ -28,8 +27,6 @@ $(document).ready(function () {
   }
 
   $carousel.on('scroll.flickity', function (event, progress) {
-    console.log(progress);
-
     moveParallaxLayer($('.background1'), bgRatio, progress);
   });
 });
