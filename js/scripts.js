@@ -43,3 +43,13 @@ $(document).ready(function () {
     $carousel.flickity('select', 0);
   });
 });
+
+$(window).on('load', function () {
+  $('.content').css({ height: window.innerHeight });
+
+  $(window).on('resize', function () {
+    $('.content').css({ height: window.innerHeight });
+  });
+})
+
+
