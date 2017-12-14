@@ -1,6 +1,16 @@
+@font-face {
+  font-family: 'Avenir-Heavy';
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.eot');
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.eot?#iefix') format('embedded-opentype'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.woff2') format('woff2'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.woff') format('woff'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.ttf') format('truetype');
+}
+
 body {
   overflow: hidden;
   background-color: #b9daf0;
+  font-family: "Avenir-Heavy", sans-serif;
 }
 
 .flickity-viewport {
@@ -8,7 +18,8 @@ body {
 }
 
 .content {
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -23,43 +34,48 @@ body {
 
 .member {
   position: relative;
-  height: 420px;
+  padding: 20px 0;
+  height: 606px;
   width: 240px;
-  margin-right: 20px;
+  margin-right: 100px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   transition: background-color 0.15s ease-in-out;
 }
 
 .message {
-  font-family: sans-serif;
   line-height: 1.3;
-  position: absolute;
-  bottom: 460px;
-  left: 50%;
-  transform: translate(-50%, 20px);
-  height: auto;
-  width: 300px;
+  position: relative;
+  text-align: center;
+  transform: translateY(20px);
+  height: 100px;
+  width: 260px;
   background: white;
-  border-radius: 5px;
+  border-radius: 50px;
+  border: 1px solid black;
   padding: 20px;
   pointer-events: none;
   opacity: 0;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transition-delay: 0s;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .message:after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   width: 20px;
   height: 20px;
   background: white;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  left: calc(50% + 36px);
+  transform: translateX(-50%) rotate(82deg) skew(41deg)
 }
 
 .member span {
@@ -78,14 +94,14 @@ body {
 }
 
 .member.is-selected .message {
-  transform: translate(-50%, 0);
+  transform: none;
   opacity: 1;
   pointer-events: auto;
   transition-delay: 0.2s;
 }
 
 .member img {
-  height: 100%;
+  height: 416px;
 }
 
 .member img.action,
@@ -102,7 +118,7 @@ body {
   width: 100%;
   height: 43%;
   background: #244868;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   z-index: 2;
 }
@@ -111,7 +127,7 @@ body {
   width: 2500%;
   height: 704px;
   background-image: url('../assets/img/skyline.jpg');
-  position: absolute;
+  position: fixed;
   top: calc(50% - 252px);
   left: -2.5%;
   transform: translateY(-50%);
@@ -120,7 +136,8 @@ body {
 
 .bookend {
   width: 800px;
-  height: 400px;
+  max-width: 80vw;
+  height: 100%;
   font-size: 60px;
   color: white;
   text-align: center;
@@ -131,14 +148,15 @@ body {
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
   padding: 4rem;
+  max-height: 100vh;
 }
 
 .intro {
-  margin-right: 10vw;
+  margin-right: 20vw;
 }
 
 .outro {
-  margin-left: 10vw;
+  margin-left: 20vw;
 }
 
 button {
@@ -155,4 +173,45 @@ button {
 button:hover {
   background: transparent;
   color: white;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .member {
+    margin-right: 10px;
+    height: 500px;
+    width: 182px;
+  }
+
+  .member img {
+    height: 316px;
+  }
+
+  .bookend {
+    font-size: 30px;
+    padding: 2rem;
+  }
+
+  .intro {
+    margin-right: 30vw;
+  }
+
+  .outro {
+    margin-left: 30vw;
+  }
+}
+
+@media only screen and (max-height: 415px) and (orientation: landscape) {
+  .content {
+    display: block;
+  }
+
+  /*.carousel {
+    top: 60vh;
+  }
+
+  .bookend {
+    top: -60vh;
+    height: 100vh;
+  }*/
 }
