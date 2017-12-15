@@ -65,6 +65,10 @@ header {
   font-size: 20px;
 }
 
+.typ--book {
+  font-family: "Avenir-book", sans-serif;
+}
+
 header a {
   transition: color 0.2s ease-in-out;
   color: rgba(0, 0, 0, 0.2);
@@ -247,6 +251,11 @@ a:hover { color: #FF2953;  }
   align-items: center;
   justify-content: center;
   max-height: 100vh;
+}
+
+.bookend a {
+  display: block;
+  margin-top: 30px;
 }
 
 h2 {
