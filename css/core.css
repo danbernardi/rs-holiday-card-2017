@@ -33,14 +33,59 @@
   url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.ttf') format('truetype');
 }
 
+[class^='icon-'],
+[class*='icon-'] {
+  font-family: "redshift-icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+  text-decoration: none;
+  text-transform: none;
+}
+
+.icon-redshift:before {
+  content: "\e908";
+}
+
 body {
   overflow: hidden;
   background-color: white;
   font-family: "Avenir-Book", sans-serif;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  font-size: 20px;
+}
+
+header a {
+  transition: color 0.2s ease-in-out;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+a:hover { color: #FF2953;  }
+
 .flickity-viewport {
   overflow: visible;
+}
+
+.audioplayer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #FAFAFA;
+}
+
+.audioplayer audio {
+  float: right;
 }
 
 .content {
@@ -61,14 +106,22 @@ body {
 .member {
   position: relative;
   padding: 20px 0;
-  height: 606px;
-  width: 240px;
-  margin-right: 100px;
+  height: 565px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.15s ease-in-out;
+}
+
+.member > p {
+  position: absolute;
+  bottom: -30px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0s;
+  font-family: "Avenir-Heavy", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .message {
@@ -78,11 +131,11 @@ body {
   text-align: center;
   transform: translateY(20px);
   height: 100px;
-  width: 260px;
+  width: 420px;
   background: white;
   border-radius: 50px;
   border: 1px solid black;
-  padding: 20px;
+  padding: 20px 30px;
   pointer-events: none;
   opacity: 0;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -90,6 +143,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.message p {
+  padding-top: 4px;
 }
 
 .message__speachindicator {
@@ -113,6 +170,12 @@ body {
 
 .member.is-selected span {
   color: black;
+}
+
+.member.is-selected p {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
 }
 
 .member.is-selected .message {
@@ -149,22 +212,24 @@ body {
   content: '';
   position: absolute;
   left: 0;
-  top: -54px;
+  top: -52px;
   height: 62px;
   width: 100%;
   background-image: url('../assets/img/platform.svg');
   background-size: contain;
   background-repeat: repeat-x;
+  background-size: 2212px 100%;
 }
 
 .background {
   width: 2500%;
-  height: 456px;
+  height: 600px;
   background-image: url('../assets/img/cityscape.svg');
   background-repeat: repeat-x;
   background-position: bottom;
+  background-size: auto 600px;
   position: fixed;
-  top: calc(50% - 252px);
+  top: calc(50% - 50px);
   left: -2.5%;
   transform: translateY(-50%);
   z-index: 1;
@@ -175,7 +240,6 @@ body {
   max-width: 80vw;
   height: 100%;
   font-family: "Avenir-Black", sans-serif;
-  font-size: 36px;
   text-align: center;
   line-height: 1.3;
   display: flex;
@@ -185,12 +249,16 @@ body {
   max-height: 100vh;
 }
 
+h2 {
+  font-size: 36px;
+}
+
 .intro {
-  margin-right: 20vw;
+  margin-right: 10vw;
 }
 
 .outro {
-  margin-left: 20vw;
+  margin-left: 10vw;
 }
 
 button {
@@ -213,12 +281,17 @@ button:hover {
 @media only screen and (max-width: 767px) {
   .member {
     margin-right: 10px;
-    height: 500px;
-    width: 182px;
+    height: 475px;
+    width: 152px;
   }
 
-  .member img {
+  .member > img {
     height: 316px;
+  }
+
+  .message {
+    font-size: 18px;
+    width: 300px;
   }
 
   .bookend {
