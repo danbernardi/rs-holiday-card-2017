@@ -1,4 +1,30 @@
 @font-face {
+  font-family: 'redshift-icons';
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/redshift-icons.eot');
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/redshift-icons.eot?#iefix') format('eot'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/redshift-icons.woff') format('woff'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/redshift-icons.ttf') format('truetype'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/redshift-icons.svg#redshift-icons') format('svg');
+}
+
+@font-face {
+  font-family: 'Avenir-Black';
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_4_0.eot');
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_4_0.eot?#iefix') format('embedded-opentype'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_4_0.woff2') format('woff2'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_4_0.woff') format('woff'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_4_0.ttf') format('truetype');
+}
+
+@font-face {font-family: 'Avenir-Book';
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_6_0.eot');
+  src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_6_0.eot?#iefix') format('embedded-opentype'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_6_0.woff2') format('woff2'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_6_0.woff') format('woff'),
+  url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_6_0.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Avenir-Heavy';
   src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.eot');
   src: url('https://s3-us-west-1.amazonaws.com/rs-website-cdn/fonts/31ED00_B_0.eot?#iefix') format('embedded-opentype'),
@@ -9,8 +35,8 @@
 
 body {
   overflow: hidden;
-  background-color: #b9daf0;
-  font-family: "Avenir-Heavy", sans-serif;
+  background-color: white;
+  font-family: "Avenir-Book", sans-serif;
 }
 
 .flickity-viewport {
@@ -46,7 +72,8 @@ body {
 }
 
 .message {
-  line-height: 1.3;
+  font-size: 24px;
+  line-height: 1.375;
   position: relative;
   text-align: center;
   transform: translateY(20px);
@@ -65,17 +92,12 @@ body {
   justify-content: center;
 }
 
-.message:after {
-  content: '';
+.message__speachindicator {
   position: absolute;
-  bottom: -12px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  left: calc(50% + 36px);
-  transform: translateX(-50%) rotate(82deg) skew(41deg)
+  width: 24px;
+  bottom: -29px;
+  left: calc(50% + 24px);
+  transform: translateX(-50%);
 }
 
 .member span {
@@ -100,33 +122,47 @@ body {
   transition-delay: 0.2s;
 }
 
-.member img {
+.member > img {
   height: 416px;
 }
 
-.member img.action,
-.member.is-selected img.base {
+.member > img.action,
+.member.is-selected > img.base {
   display: none;
 }
 
-.member img.base,
-.member.is-selected img.action {
+.member > img.base,
+.member.is-selected > img.action {
   display: block;
 }
 
-.foreground1 {
+.foreground {
   width: 100%;
-  height: 43%;
-  background: #244868;
-  position: fixed;
+  height: calc(33% - 62px);
+  background: #DAEFF5;
+  position: absolute;
   bottom: 0;
   z-index: 2;
 }
 
-.background1 {
+.foreground:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -54px;
+  height: 62px;
+  width: 100%;
+  background-image: url('../assets/img/platform.svg');
+  background-size: contain;
+  background-repeat: repeat-x;
+}
+
+.background {
   width: 2500%;
-  height: 704px;
-  background-image: url('../assets/img/skyline.jpg');
+  height: 456px;
+  background-image: url('../assets/img/cityscape.svg');
+  background-repeat: repeat-x;
+  background-position: bottom;
   position: fixed;
   top: calc(50% - 252px);
   left: -2.5%;
@@ -135,19 +171,17 @@ body {
 }
 
 .bookend {
-  width: 800px;
+  width: 500px;
   max-width: 80vw;
   height: 100%;
-  font-size: 60px;
-  color: white;
+  font-family: "Avenir-Black", sans-serif;
+  font-size: 36px;
   text-align: center;
   line-height: 1.3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 4rem;
   max-height: 100vh;
 }
 

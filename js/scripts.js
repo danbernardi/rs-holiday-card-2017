@@ -35,7 +35,7 @@ $(document).ready(function () {
 
   // trigger parallax animation on scroll
   $carousel.on('scroll.flickity', function (event, progress) {
-    moveParallaxLayer($('.background1'), bgRatio, progress);
+    moveParallaxLayer($('.background'), bgRatio, progress);
   });
 
   // add click handler for back to start button
@@ -43,8 +43,8 @@ $(document).ready(function () {
     $carousel.flickity('select', 0);
   });
 
-  var nextSlide = debounce(function () { $carousel.flickity('next'); }, 250, true);
-  var previousSlide = debounce(function () { $carousel.flickity('previous'); }, 250, true);
+  var nextSlide = debounce(function () { console.log('next'); $carousel.flickity('next'); }, 50, true);
+  var previousSlide = debounce(function () { console.log('previous'); $carousel.flickity('previous'); }, 50, true);
 
   $(window).on('mousewheel', function (event) {
     const xDelta = event.originalEvent.wheelDeltaX;
